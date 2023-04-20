@@ -25,6 +25,8 @@ const SearchUser = () => {
   const onGetFollowers = (url) => {
     console.log("ID : ", url);
     navigate(`/followers/${url}`);
+  };
+  const onGetRepoDetails = (url) => {
     navigate(`/repo/${url}`);
   };
 
@@ -37,6 +39,7 @@ const SearchUser = () => {
             <CardTitle>Name : {profile.name}</CardTitle>
             <CardSubtitle>ID : {id}</CardSubtitle>
             <CardText>Bio : {profile.bio}</CardText>
+            <CardLink>RepoDetails : {profile.repos_url}</CardLink>
             <Button onClick={() => onGetFollowers(id)}>Followers</Button>
             <Button onClick={() => onGetRepoDetails(id)}>RepoDetails</Button>
           </CardBody>

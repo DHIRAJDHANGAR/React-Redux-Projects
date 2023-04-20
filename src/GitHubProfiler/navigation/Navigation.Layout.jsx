@@ -15,11 +15,11 @@ const router = createBrowserRouter([
     element: <SearchUser />,
   },
   {
-    path: "/repo",
+    path: "/repo/:url",
     element: <RepoDetails />,
   },
   {
-    path: "/followers/:id",
+    path: "/followers/:url",
     element: <Followers />,
   },
   {

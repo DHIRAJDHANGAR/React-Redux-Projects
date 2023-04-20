@@ -12,13 +12,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getFollowerList } from "./Follower.Api";
 
 const Followers = () => {
-  const { id } = useParams();
+  const { url } = useParams();
   const [followList, setFollowList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getFollowerList(id).then((data) => setFollowList(data));
-  }, [id]);
+    getFollowerList(url).then((data) => setFollowList(data));
+  }, [url]);
 
   const onGetUser = (path) => {
     console.log("path: ", path);
