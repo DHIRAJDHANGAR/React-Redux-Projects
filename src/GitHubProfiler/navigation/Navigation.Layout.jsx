@@ -4,6 +4,8 @@ import HomePage from "../features/Homepage/Homepage.Layout";
 import SearchUser from "../features/SearchUser/SearchUser.Layout";
 import RepoDetails from "../features/RepoDetails/RepoDetails.Layout";
 import Followers from "../features/Followers/Follower.Layout";
+import { useContext, useState } from "react";
+import { themeContext } from "../../App";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
     element: <SearchUser />,
   },
   {
-    path: "/repo/:url",
+    path: "/reposDetails/:repoName",
     element: <RepoDetails />,
   },
   {
@@ -28,7 +30,9 @@ const router = createBrowserRouter([
   },
 ]);
 
-const Navigation = () => {
+const Navigations = () => {
+ 
+
   return <RouterProvider router={router} />;
 };
-export default Navigation;
+export default Navigations;

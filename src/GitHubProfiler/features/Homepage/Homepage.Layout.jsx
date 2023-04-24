@@ -1,11 +1,18 @@
-import { useState } from "react";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button, FormGroup, Input } from "reactstrap";
+import { themeContext } from "../../../App";
 
 const HomePage = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const darkTheme = useContext(themeContext);
+
+  const themeStyles = {
+    color: darkTheme ? "black" : "white",
+    backgroundColor: darkTheme ? "white" : "black",
+  };
 
   const onSearchUser = () => {
     if (!search) {
@@ -23,19 +30,29 @@ const HomePage = () => {
     }
     navigate(`/search/${search}`);
   };
+
   return (
     <>
-      <FormGroup>
-        <h1>GitHub User Name</h1>
-        <Input
-          type="text"
-          name="text"
-          placeholder="Search your user here"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </FormGroup>
-      <Button onClick={onSearchUser}>Search</Button>
+      <div>
+        <FormGroup>
+          <img
+            src="https://github.githubassets.com/images/modules/open_graph/github-mark.png"
+            width={"200px"}
+          />
+          <h1>GitHub</h1>
+          <Input
+            type="text"
+            name="text"
+            placeholder="Search your user here"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            // style={themeStyles}
+          />
+        </FormGroup>
+        <Button color="primary" onClick={onSearchUser}>
+          Search
+        </Button>
+      </div>
     </>
   );
 };
