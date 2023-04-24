@@ -9,9 +9,10 @@ const HomePage = () => {
   const navigate = useNavigate();
   const darkTheme = useContext(themeContext);
 
+  document.body.style.background = darkTheme ? "white" : "black";
+
   const themeStyles = {
     color: darkTheme ? "black" : "white",
-    backgroundColor: darkTheme ? "white" : "black",
   };
 
   const onSearchUser = () => {
@@ -46,7 +47,7 @@ const HomePage = () => {
             placeholder="Search your user here"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            // style={themeStyles}
+            style={themeStyles}
           />
         </FormGroup>
         <Button color="primary" onClick={onSearchUser}>
