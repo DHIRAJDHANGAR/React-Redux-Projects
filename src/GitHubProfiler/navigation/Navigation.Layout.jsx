@@ -1,11 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
 import HomePage from "../features/Homepage/Homepage.Layout";
 import SearchUser from "../features/SearchUser/SearchUser.Layout";
 import RepoDetails from "../features/RepoDetails/RepoDetails.Layout";
 import Followers from "../features/Followers/Follower.Layout";
-import { useContext, useState } from "react";
-import { themeContext } from "../../App";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +28,6 @@ const router = createBrowserRouter([
 ]);
 
 const Navigations = () => {
- 
-
   return <RouterProvider router={router} />;
 };
 export default Navigations;

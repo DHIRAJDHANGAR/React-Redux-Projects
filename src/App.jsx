@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import Navigations from "./GitHubProfiler/navigation/Navigation.Layout";
@@ -7,24 +7,31 @@ export const themeContext = createContext(null);
 const ThemeProvider = themeContext.Provider;
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("savedTheme") || true
+  );
+
+  useEffect(() => {
+    localStorage.setItem("saveTheme", theme);
+  }, [theme]);
 
   function toggleTheme() {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
+    setTheme((prevTheme) => (prevTheme === true ? false : true));
   }
-  document.body.style.background = darkTheme ? "white" : "black";
+
+  document.body.style.background = theme ? "white" : "black";
 
   const themeStyles = {
-    color: darkTheme ? "black" : "white",
+    color: theme ? "black" : "white",
   };
   return (
     <>
-      <ThemeProvider value={darkTheme}>
+      <ThemeProvider value={theme}>
         <div className="App" style={themeStyles}>
           <ul className="nav justify-content-end">
-            {darkTheme === true ? (
+            {theme === true ? (
               <li className="nav-item">
-                <button type="button" onClick={() => toggleTheme(darkTheme)}>
+                <button type="button" onClick={() => toggleTheme()}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -42,7 +49,7 @@ function App() {
                 <button
                   type="button"
                   style={{ backgroundColor: "black", color: "white" }}
-                  onClick={() => toggleTheme(darkTheme)}
+                  onClick={() => toggleTheme()}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

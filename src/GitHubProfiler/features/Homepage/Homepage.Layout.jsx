@@ -3,16 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button, FormGroup, Input } from "reactstrap";
 import { themeContext } from "../../../App";
+import styled from "styled-components";
 
 const HomePage = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  const darkTheme = useContext(themeContext);
+  const theme = useContext(themeContext);
 
-  document.body.style.background = darkTheme ? "white" : "black";
+  document.body.style.background = theme ? "white" : "black";
 
   const themeStyles = {
-    color: darkTheme ? "black" : "white",
+    color: theme ? "black" : "white",
   };
 
   const onSearchUser = () => {

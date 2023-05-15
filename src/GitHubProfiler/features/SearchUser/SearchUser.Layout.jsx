@@ -10,20 +10,20 @@ const SearchUser = () => {
   const navigate = useNavigate();
   const [details, setDetails] = useState({});
   const [repo, setRepo] = useState([]);
-  const darkTheme = useContext(themeContext);
+  const theme = useContext(themeContext);
 
   const themeStyles = {
-    color: darkTheme ? "black" : "white",
-    backgroundColor: darkTheme
+    color: theme ? "black" : "white",
+    backgroundColor: theme
       ? "rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))"
       : "black ",
     textDecoration: "none",
   };
 
   const themeStylesCard = {
-    color: darkTheme ? "black" : "white",
-    backgroundColor: darkTheme ? "white" : "black",
-    border: darkTheme
+    color: theme ? "black" : "white",
+    backgroundColor: theme ? "white" : "black",
+    border: theme
       ? "var(--bs-card-border-width) solid var(--bs-card-border-color)"
       : "1px solid white",
   };
